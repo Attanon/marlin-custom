@@ -1257,11 +1257,11 @@
 
 #if ANY(HAS_LCD_MENU, EXTENSIBLE_UI, HAS_DWIN_E3V2)
 #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
-  #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
-  #if IS_ULTIPANEL
-    #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
-    #define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
-  #endif
+#define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
+#if IS_ULTIPANEL
+#define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
+#define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
+#endif
 #endif
 
 // Change values more rapidly when the encoder is rotated faster
@@ -1281,26 +1281,26 @@
 #if HAS_LCD_MENU
 
 // Add Probe Z Offset calibration to the Z Probe Offsets menu
-  #if HAS_BED_PROBE
-    #define PROBE_OFFSET_WIZARD
-    #if ENABLED(PROBE_OFFSET_WIZARD)
-      //
-      // Enable to init the Probe Z-Offset when starting the Wizard.
-      // Use a height slightly above the estimated nozzle-to-probe Z offset.
-      // For example, with an offset of -5, consider a starting height of -4.
-      //
-      //#define PROBE_OFFSET_WIZARD_START_Z -4.0
+#if HAS_BED_PROBE
+#define PROBE_OFFSET_WIZARD
+#if ENABLED(PROBE_OFFSET_WIZARD)
+//
+// Enable to init the Probe Z-Offset when starting the Wizard.
+// Use a height slightly above the estimated nozzle-to-probe Z offset.
+// For example, with an offset of -5, consider a starting height of -4.
+//
+//#define PROBE_OFFSET_WIZARD_START_Z -4.0
 
-      // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
-      //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
-    #endif
+// Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
+//#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
+#endif
 
-    #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
-      // Add a calibration procedure in the Probe Offsets menu
-      // to compensate for twist in the X-axis.
-      //#define X_AXIS_TWIST_COMPENSATION
-      #if ENABLED(X_AXIS_TWIST_COMPENSATION)
-        /**
+#if ENABLED(AUTO_BED_LEVELING_BILINEAR)
+// Add a calibration procedure in the Probe Offsets menu
+// to compensate for twist in the X-axis.
+//#define X_AXIS_TWIST_COMPENSATION
+#if ENABLED(X_AXIS_TWIST_COMPENSATION)
+/**
          * Enable to init the Probe Z-Offset when starting the Wizard.
          * Use a height slightly above the estimated nozzle-to-probe Z offset.
          * For example, with an offset of -5, consider a starting height of -4.
@@ -1308,26 +1308,26 @@
         #define XATC_START_Z 0.0
         #define XATC_MAX_POINTS 3             // Number of points to probe in the wizard
         #define XATC_Y_POSITION Y_CENTER      // (mm) Y position to probe
-      #endif
-    #endif
-  #endif
+#endif
+#endif
+#endif
 
-  // Include a page of printer information in the LCD Main Menu
-  //#define LCD_INFO_MENU
-  #if ENABLED(LCD_INFO_MENU)
-    //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
-  #endif
+// Include a page of printer information in the LCD Main Menu
+//#define LCD_INFO_MENU
+#if ENABLED(LCD_INFO_MENU)
+//#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
+#endif
 
-  // BACK menu items keep the highlight at the top
-  //#define TURBO_BACK_MENU_ITEM
+// BACK menu items keep the highlight at the top
+//#define TURBO_BACK_MENU_ITEM
 
-  /**
-   * LED Control Menu
-   * Add LED Control to the LCD menu
-   */
-  //#define LED_CONTROL_MENU
-  #if ENABLED(LED_CONTROL_MENU)
-    #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
+/**
+ * LED Control Menu
+ * Add LED Control to the LCD menu
+ */
+//#define LED_CONTROL_MENU
+#if ENABLED(LED_CONTROL_MENU)
+#define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
     #if ENABLED(LED_COLOR_PRESETS)
       #define LED_USER_PRESET_RED        255  // User defined RED value
@@ -1345,10 +1345,10 @@
       #define NEO2_USER_PRESET_BRIGHTNESS 255  // User defined intensity
       //#define NEO2_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup for the second strip
     #endif
-  #endif
+#endif
 
-  // Insert a menu for preheating at the top level to allow for quick access
-  //#define PREHEAT_SHORTCUT_MENU_ITEM
+// Insert a menu for preheating at the top level to allow for quick access
+//#define PREHEAT_SHORTCUT_MENU_ITEM
 
 #endif // HAS_LCD_MENU
 
@@ -1358,23 +1358,23 @@
 
 #if EITHER(HAS_DISPLAY, DWIN_CREALITY_LCD_ENHANCED)
 // The timeout (in ms) to return to the status screen from sub-menus
-  //#define LCD_TIMEOUT_TO_STATUS 15000
+//#define LCD_TIMEOUT_TO_STATUS 15000
 
-  #if ENABLED(SHOW_BOOTSCREEN)
-    #define BOOTSCREEN_TIMEOUT 4000      // (ms) Total Duration to display the boot screen(s)
+#if ENABLED(SHOW_BOOTSCREEN)
+#define BOOTSCREEN_TIMEOUT 4000      // (ms) Total Duration to display the boot screen(s)
     #if EITHER(HAS_MARLINUI_U8GLIB, TFT_COLOR_UI)
       #define BOOT_MARLIN_LOGO_SMALL     // Show a smaller Marlin logo on the Boot Screen (saving lots of flash)
     #endif
-  #endif
+#endif
 
-  // Scroll a longer status message into view
-  //#define STATUS_MESSAGE_SCROLLING
+// Scroll a longer status message into view
+//#define STATUS_MESSAGE_SCROLLING
 
-  // On the Info Screen, display XY with one decimal place when possible
-  //#define LCD_DECIMAL_SMALL_XY
+// On the Info Screen, display XY with one decimal place when possible
+//#define LCD_DECIMAL_SMALL_XY
 
-  // Add an 'M73' G-code to set the current percentage
-  //#define LCD_SET_PROGRESS_MANUALLY
+// Add an 'M73' G-code to set the current percentage
+//#define LCD_SET_PROGRESS_MANUALLY
 
 // Show the E position (filament used) during printing
 #define LCD_SHOW_E_TOTAL
@@ -1383,19 +1383,19 @@
 // LCD Print Progress options
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY)
 #if CAN_SHOW_REMAINING_TIME
-//#define SHOW_REMAINING_TIME         // Display estimated time to completion
+    //#define SHOW_REMAINING_TIME         // Display estimated time to completion
     #if ENABLED(SHOW_REMAINING_TIME)
       //#define USE_M73_REMAINING_TIME    // Use remaining time from M73 command instead of estimation
       //#define ROTATE_PROGRESS_DISPLAY   // Display (P)rogress, (E)lapsed, and (R)emaining time
     #endif
-#endif
+  #endif
 
-#if EITHER(HAS_MARLINUI_U8GLIB, EXTENSIBLE_UI)
-//#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
-#endif
+  #if EITHER(HAS_MARLINUI_U8GLIB, EXTENSIBLE_UI)
+    //#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
+  #endif
 
-#if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-//#define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
+  #if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
+    //#define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
     #if ENABLED(LCD_PROGRESS_BAR)
       #define PROGRESS_BAR_BAR_TIME 2000  // (ms) Amount of time to show the bar
       #define PROGRESS_BAR_MSG_TIME 3000  // (ms) Amount of time to show the status message
@@ -1403,65 +1403,65 @@
       //#define PROGRESS_MSG_ONCE         // Show the message for MSG_TIME then clear it
       //#define LCD_PROGRESS_BAR_TEST     // Add a menu item to test the progress bar
     #endif
-#endif
+  #endif
 #endif
 
 #if ENABLED(SDSUPPORT)
 /**
- * SD Card SPI Speed
- * May be required to resolve "volume init" errors.
- *
- * Enable and set to SPI_HALF_SPEED, SPI_QUARTER_SPEED, or SPI_EIGHTH_SPEED
- *  otherwise full speed will be applied.
- *
- * :['SPI_HALF_SPEED', 'SPI_QUARTER_SPEED', 'SPI_EIGHTH_SPEED']
- */
-//#define SD_SPI_SPEED SPI_HALF_SPEED
+   * SD Card SPI Speed
+   * May be required to resolve "volume init" errors.
+   *
+   * Enable and set to SPI_HALF_SPEED, SPI_QUARTER_SPEED, or SPI_EIGHTH_SPEED
+   *  otherwise full speed will be applied.
+   *
+   * :['SPI_HALF_SPEED', 'SPI_QUARTER_SPEED', 'SPI_EIGHTH_SPEED']
+   */
+  //#define SD_SPI_SPEED SPI_HALF_SPEED
 
-// The standard SD detect circuit reads LOW when media is inserted and HIGH when empty.
-// Enable this option and set to HIGH if your SD cards are incorrectly detected.
-#define SD_DETECT_STATE LOW
+  // The standard SD detect circuit reads LOW when media is inserted and HIGH when empty.
+  // Enable this option and set to HIGH if your SD cards are incorrectly detected.
+  #define SD_DETECT_STATE LOW
 
-//#define SD_IGNORE_AT_STARTUP            // Don't mount the SD card when starting up
-//#define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
+  //#define SD_IGNORE_AT_STARTUP            // Don't mount the SD card when starting up
+  //#define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
 
-//#define GCODE_REPEAT_MARKERS            // Enable G-code M808 to set repeat markers and do looping
+  //#define GCODE_REPEAT_MARKERS            // Enable G-code M808 to set repeat markers and do looping
 
-#define SD_PROCEDURE_DEPTH 1              // Increase if you need more nested M32 calls
+  #define SD_PROCEDURE_DEPTH 1              // Increase if you need more nested M32 calls
 
-#define SD_FINISHED_STEPPERRELEASE true   // Disable steppers when SD Print is finished
-#define SD_FINISHED_RELEASECOMMAND "M84"  // Use "M84XYE" to keep Z enabled so your bed stays in place
+  #define SD_FINISHED_STEPPERRELEASE true   // Disable steppers when SD Print is finished
+  #define SD_FINISHED_RELEASECOMMAND "M84"  // Use "M84XYE" to keep Z enabled so your bed stays in place
 
-// Reverse SD sort to show "more recent" files first, according to the card's FAT.
-// Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
-#define SDCARD_RATHERRECENTFIRST
+  // Reverse SD sort to show "more recent" files first, according to the card's FAT.
+  // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
+  #define SDCARD_RATHERRECENTFIRST
 
-#define SD_MENU_CONFIRM_START             // Confirm the selected SD file before printing
+  #define SD_MENU_CONFIRM_START             // Confirm the selected SD file before printing
 
-//#define NO_SD_AUTOSTART                 // Remove auto#.g file support completely to save some Flash, SRAM
-//#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
+  //#define NO_SD_AUTOSTART                 // Remove auto#.g file support completely to save some Flash, SRAM
+  //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
-//#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
+  //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
 
-//#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
+  //#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
 
-#define EVENT_GCODE_SD_ABORT "G28XY"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
+  #define EVENT_GCODE_SD_ABORT "G28XY"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
-#if ENABLED(PRINTER_EVENT_LEDS)
-#define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
-#endif
+  #if ENABLED(PRINTER_EVENT_LEDS)
+    #define PE_LEDS_COMPLETED_TIME  (30*60) // (seconds) Time to keep the LED "done" color before restoring normal illumination
+  #endif
 
-/**
- * Continue after Power-Loss (Creality3D)
- *
- * Store the current state to the SD Card at the start of each layer
- * during SD printing. If the recovery file is found at boot time, present
- * an option on the LCD screen to continue the print from the last-known
- * point in the file.
- */
-//#define POWER_LOSS_RECOVERY
-#if ENABLED(POWER_LOSS_RECOVERY)
-#define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
+  /**
+   * Continue after Power-Loss (Creality3D)
+   *
+   * Store the current state to the SD Card at the start of each layer
+   * during SD printing. If the recovery file is found at boot time, present
+   * an option on the LCD screen to continue the print from the last-known
+   * point in the file.
+   */
+  //#define POWER_LOSS_RECOVERY
+  #if ENABLED(POWER_LOSS_RECOVERY)
+    #define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
     //#define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
     //#define POWER_LOSS_ZRAISE       2 // (mm) Z axis raise on resume (on power loss with UPS)
     //#define POWER_LOSS_PIN         44 // Pin to detect power loss. Set to -1 to disable default pin on boards without module.
@@ -1480,36 +1480,36 @@
     #if ENABLED(POWER_LOSS_RECOVER_ZHOME)
       //#define POWER_LOSS_ZHOME_POS { 0, 0 } // Safe XY position to home Z while avoiding objects on the bed
     #endif
-#endif
+  #endif
 
-/**
- * Sort SD file listings in alphabetical order.
- *
- * With this option enabled, items on SD cards will be sorted
- * by name for easier navigation.
- *
- * By default...
- *
- *  - Use the slowest -but safest- method for sorting.
- *  - Folders are sorted to the top.
- *  - The sort key is statically allocated.
- *  - No added G-code (M34) support.
- *  - 40 item sorting limit. (Items after the first 40 are unsorted.)
- *
- * SD sorting uses static allocation (as set by SDSORT_LIMIT), allowing the
- * compiler to calculate the worst-case usage and throw an error if the SRAM
- * limit is exceeded.
- *
- *  - SDSORT_USES_RAM provides faster sorting via a static directory buffer.
- *  - SDSORT_USES_STACK does the same, but uses a local stack-based buffer.
- *  - SDSORT_CACHE_NAMES will retain the sorted file listing in RAM. (Expensive!)
- *  - SDSORT_DYNAMIC_RAM only uses RAM when the SD menu is visible. (Use with caution!)
- */
-//#define SDCARD_SORT_ALPHA
+  /**
+   * Sort SD file listings in alphabetical order.
+   *
+   * With this option enabled, items on SD cards will be sorted
+   * by name for easier navigation.
+   *
+   * By default...
+   *
+   *  - Use the slowest -but safest- method for sorting.
+   *  - Folders are sorted to the top.
+   *  - The sort key is statically allocated.
+   *  - No added G-code (M34) support.
+   *  - 40 item sorting limit. (Items after the first 40 are unsorted.)
+   *
+   * SD sorting uses static allocation (as set by SDSORT_LIMIT), allowing the
+   * compiler to calculate the worst-case usage and throw an error if the SRAM
+   * limit is exceeded.
+   *
+   *  - SDSORT_USES_RAM provides faster sorting via a static directory buffer.
+   *  - SDSORT_USES_STACK does the same, but uses a local stack-based buffer.
+   *  - SDSORT_CACHE_NAMES will retain the sorted file listing in RAM. (Expensive!)
+   *  - SDSORT_DYNAMIC_RAM only uses RAM when the SD menu is visible. (Use with caution!)
+   */
+  //#define SDCARD_SORT_ALPHA
 
-// SD Card Sorting options
-#if ENABLED(SDCARD_SORT_ALPHA)
-#define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
+  // SD Card Sorting options
+  #if ENABLED(SDCARD_SORT_ALPHA)
+    #define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
     #define FOLDER_SORTING     -1     // -1=above  0=none  1=below
     #define SDSORT_GCODE       false  // Allow turning sorting on/off with LCD and M34 G-code.
     #define SDSORT_USES_RAM    false  // Pre-allocate a static array for faster pre-sorting.
@@ -1518,57 +1518,57 @@
     #define SDSORT_DYNAMIC_RAM false  // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
     #define SDSORT_CACHE_VFATS 2      // Maximum number of 13-byte VFAT entries to use for sorting.
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
-#endif
+  #endif
 
-// Allow international symbols in long filenames. To display correctly, the
-// LCD's font must contain the characters. Check your selected LCD language.
-//#define UTF_FILENAME_SUPPORT
+  // Allow international symbols in long filenames. To display correctly, the
+  // LCD's font must contain the characters. Check your selected LCD language.
+  //#define UTF_FILENAME_SUPPORT
 
-// This allows hosts to request long names for files and folders with M33
-//#define LONG_FILENAME_HOST_SUPPORT
+  // This allows hosts to request long names for files and folders with M33
+  //#define LONG_FILENAME_HOST_SUPPORT
 
-// Enable this option to scroll long filenames in the SD card menu
-//#define SCROLL_LONG_FILENAMES
+  // Enable this option to scroll long filenames in the SD card menu
+  //#define SCROLL_LONG_FILENAMES
 
-// Leave the heaters on after Stop Print (not recommended!)
-//#define SD_ABORT_NO_COOLDOWN
+  // Leave the heaters on after Stop Print (not recommended!)
+  //#define SD_ABORT_NO_COOLDOWN
 
-/**
- * This option allows you to abort SD printing when any endstop is triggered.
- * This feature must be enabled with "M540 S1" or from the LCD menu.
- * To have any effect, endstops must be enabled during SD printing.
- */
-//#define SD_ABORT_ON_ENDSTOP_HIT
+  /**
+   * This option allows you to abort SD printing when any endstop is triggered.
+   * This feature must be enabled with "M540 S1" or from the LCD menu.
+   * To have any effect, endstops must be enabled during SD printing.
+   */
+  //#define SD_ABORT_ON_ENDSTOP_HIT
 
-/**
- * This option makes it easier to print the same SD Card file again.
- * On print completion the LCD Menu will open with the file selected.
- * You can just click to start the print, or navigate elsewhere.
- */
-//#define SD_REPRINT_LAST_SELECTED_FILE
+  /**
+   * This option makes it easier to print the same SD Card file again.
+   * On print completion the LCD Menu will open with the file selected.
+   * You can just click to start the print, or navigate elsewhere.
+   */
+  //#define SD_REPRINT_LAST_SELECTED_FILE
 
-/**
- * Auto-report SdCard status with M27 S<seconds>
- */
-//#define AUTO_REPORT_SD_STATUS
+  /**
+   * Auto-report SdCard status with M27 S<seconds>
+   */
+  //#define AUTO_REPORT_SD_STATUS
 
-/**
- * Support for USB thumb drives using an Arduino USB Host Shield or
- * equivalent MAX3421E breakout board. The USB thumb drive will appear
- * to Marlin as an SD card.
- *
- * The MAX3421E can be assigned the same pins as the SD card reader, with
- * the following pin mapping:
- *
- *    SCLK, MOSI, MISO --> SCLK, MOSI, MISO
- *    INT              --> SD_DETECT_PIN [1]
- *    SS               --> SDSS
- *
- * [1] On AVR an interrupt-capable pin is best for UHS3 compatibility.
- */
-//#define USB_FLASH_DRIVE_SUPPORT
-#if ENABLED(USB_FLASH_DRIVE_SUPPORT)
-/**
+  /**
+   * Support for USB thumb drives using an Arduino USB Host Shield or
+   * equivalent MAX3421E breakout board. The USB thumb drive will appear
+   * to Marlin as an SD card.
+   *
+   * The MAX3421E can be assigned the same pins as the SD card reader, with
+   * the following pin mapping:
+   *
+   *    SCLK, MOSI, MISO --> SCLK, MOSI, MISO
+   *    INT              --> SD_DETECT_PIN [1]
+   *    SS               --> SDSS
+   *
+   * [1] On AVR an interrupt-capable pin is best for UHS3 compatibility.
+   */
+  //#define USB_FLASH_DRIVE_SUPPORT
+  #if ENABLED(USB_FLASH_DRIVE_SUPPORT)
+    /**
      * USB Host Shield Library
      *
      * - UHS2 uses no interrupts and has been production-tested
@@ -1590,57 +1590,57 @@
       #define USB_CS_PIN    SDSS
       #define USB_INTR_PIN  SD_DETECT_PIN
     #endif
-#endif
+  #endif
 
-/**
- * When using a bootloader that supports SD-Firmware-Flashing,
- * add a menu item to activate SD-FW-Update on the next reboot.
- *
- * Requires ATMEGA2560 (Arduino Mega)
- *
- * Tested with this bootloader:
- *   https://github.com/FleetProbe/MicroBridge-Arduino-ATMega2560
- */
-//#define SD_FIRMWARE_UPDATE
-#if ENABLED(SD_FIRMWARE_UPDATE)
-#define SD_FIRMWARE_UPDATE_EEPROM_ADDR    0x1FF
+  /**
+   * When using a bootloader that supports SD-Firmware-Flashing,
+   * add a menu item to activate SD-FW-Update on the next reboot.
+   *
+   * Requires ATMEGA2560 (Arduino Mega)
+   *
+   * Tested with this bootloader:
+   *   https://github.com/FleetProbe/MicroBridge-Arduino-ATMega2560
+   */
+  //#define SD_FIRMWARE_UPDATE
+  #if ENABLED(SD_FIRMWARE_UPDATE)
+    #define SD_FIRMWARE_UPDATE_EEPROM_ADDR    0x1FF
     #define SD_FIRMWARE_UPDATE_ACTIVE_VALUE   0xF0
     #define SD_FIRMWARE_UPDATE_INACTIVE_VALUE 0xFF
-#endif
+  #endif
 
-/**
- * Enable this option if you have more than ~3K of unused flash space.
- * Marlin will embed all settings in the firmware binary as compressed data.
- * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
- * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
- */
-//#define CONFIGURATION_EMBEDDING
+  /**
+   * Enable this option if you have more than ~3K of unused flash space.
+   * Marlin will embed all settings in the firmware binary as compressed data.
+   * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
+   * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
+   */
+  //#define CONFIGURATION_EMBEDDING
 
-// Add an optimized binary file transfer mode, initiated with 'M28 B1'
-//#define BINARY_FILE_TRANSFER
+  // Add an optimized binary file transfer mode, initiated with 'M28 B1'
+  //#define BINARY_FILE_TRANSFER
 
-/**
- * Set this option to one of the following (or the board's defaults apply):
- *
- *           LCD - Use the SD drive in the external LCD controller.
- *       ONBOARD - Use the SD drive on the control board.
- *  CUSTOM_CABLE - Use a custom cable to access the SD (as defined in a pins file).
- *
- * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
- */
-//#define SDCARD_CONNECTION LCD
+  /**
+   * Set this option to one of the following (or the board's defaults apply):
+   *
+   *           LCD - Use the SD drive in the external LCD controller.
+   *       ONBOARD - Use the SD drive on the control board.
+   *  CUSTOM_CABLE - Use a custom cable to access the SD (as defined in a pins file).
+   *
+   * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
+   */
+  //#define SDCARD_CONNECTION LCD
 
-// Enable if SD detect is rendered useless (e.g., by using an SD extender)
-//#define NO_SD_DETECT
+  // Enable if SD detect is rendered useless (e.g., by using an SD extender)
+  //#define NO_SD_DETECT
 
-// Multiple volume support - EXPERIMENTAL.
-//#define MULTI_VOLUME
-#if ENABLED(MULTI_VOLUME)
-#define VOLUME_SD_ONBOARD
+  // Multiple volume support - EXPERIMENTAL.
+  //#define MULTI_VOLUME
+  #if ENABLED(MULTI_VOLUME)
+    #define VOLUME_SD_ONBOARD
     #define VOLUME_USB_FLASH_DRIVE
     #define DEFAULT_VOLUME SV_SD_ONBOARD
     #define DEFAULT_SHARED_VOLUME SV_USB_FLASH_DRIVE
-#endif
+  #endif
 
 #endif // SDSUPPORT
 
@@ -1955,14 +1955,14 @@
 #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
 #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
-//#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
 #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
 #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
-                                            // Note: Extra time may be added to mitigate controller latency.
-    //#define MOVE_Z_WHEN_IDLE              // Jump to the move Z menu on doubleclick when printer is idle.
-    #if ENABLED(MOVE_Z_WHEN_IDLE)
-      #define MOVE_Z_IDLE_MULTIPLICATOR 1   // Multiply 1mm by this factor for the move step size.
-    #endif
+// Note: Extra time may be added to mitigate controller latency.
+//#define MOVE_Z_WHEN_IDLE              // Jump to the move Z menu on doubleclick when printer is idle.
+#if ENABLED(MOVE_Z_WHEN_IDLE)
+#define MOVE_Z_IDLE_MULTIPLICATOR 1   // Multiply 1mm by this factor for the move step size.
+#endif
 #endif
 
 //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
@@ -1970,7 +1970,7 @@
 #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
 #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
 //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
-    //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
+//#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
 #endif
 #endif
 
@@ -2036,9 +2036,9 @@
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
 //#define PROBING_MARGIN_LEFT PROBING_MARGIN
-  //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
-  //#define PROBING_MARGIN_FRONT PROBING_MARGIN
-  //#define PROBING_MARGIN_BACK PROBING_MARGIN
+//#define PROBING_MARGIN_RIGHT PROBING_MARGIN
+#define PROBING_MARGIN_FRONT 50
+//#define PROBING_MARGIN_BACK PROBING_MARGIN
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
@@ -2284,12 +2284,12 @@
 
 #if ENABLED(SDSUPPORT)
 // Enable this option to collect and display the maximum
-// RX queue usage after transferring a file to SD.
-//#define SERIAL_STATS_MAX_RX_QUEUED
+  // RX queue usage after transferring a file to SD.
+  //#define SERIAL_STATS_MAX_RX_QUEUED
 
-// Enable this option to collect and display the number
-// of dropped bytes after a file transfer to SD.
-//#define SERIAL_STATS_DROPPED_RX
+  // Enable this option to collect and display the number
+  // of dropped bytes after a file transfer to SD.
+  //#define SERIAL_STATS_DROPPED_RX
 #endif
 
 // Monitor RX buffer usage
@@ -4284,13 +4284,13 @@
  */
 #if ENABLED(PRINTCOUNTER)
 #define SERVICE_WARNING_BUZZES  3
-  // Activate up to 3 service interval watchdogs
-  //#define SERVICE_NAME_1      "Service S"
-  //#define SERVICE_INTERVAL_1  100 // print hours
-  //#define SERVICE_NAME_2      "Service L"
-  //#define SERVICE_INTERVAL_2  200 // print hours
-  //#define SERVICE_NAME_3      "Service 3"
-  //#define SERVICE_INTERVAL_3    1 // print hours
+// Activate up to 3 service interval watchdogs
+//#define SERVICE_NAME_1      "Service S"
+//#define SERVICE_INTERVAL_1  100 // print hours
+//#define SERVICE_NAME_2      "Service L"
+//#define SERVICE_INTERVAL_2  200 // print hours
+//#define SERVICE_NAME_3      "Service 3"
+//#define SERVICE_INTERVAL_3    1 // print hours
 #endif
 
 // @section develop
